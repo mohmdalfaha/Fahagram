@@ -10,14 +10,6 @@ export default class StoryList extends React.Component {
       <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
         <StoryStatus/>
         <StoryStatus/>
-        <StoryStatus/>
-        <StoryStatus/>
-        <StoryStatus/>
-        <StoryStatus/>
-        <StoryStatus/>
-        <StoryStatus/>
-        <StoryStatus/>
-        <StoryStatus/>
       </ScrollView>
       </View>
     );

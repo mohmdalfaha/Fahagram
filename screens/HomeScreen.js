@@ -8,11 +8,12 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import {Constants,LinearGradient} from 'expo';
+import {Icon,Constants,LinearGradient} from 'expo';
+import Colors from '../constants/Colors';
 
 import StoryList from '../components/StoryList'
 import PostList from '../components/PostList'
-
+import CameraBtnIcon from '../components/CameraBtn'
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -22,20 +23,14 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
    <View style={styles.container}>
-      <ScrollView style={styles.container}>
-        <View style={styles.header}>
-         <LinearGradient
-          colors = {['rgb(48,35,174)','rgb(200,109,215)']}
-          style = {styles.cameraBtn}
-          >
-
-      </LinearGradient>
-          <View style={styles.cameraBtn}/>
-          <Text style={styles.headerTitle}>Fahagram</Text>
-        </View>
-           <StoryList style={{flex:1}}/>
-           <PostList style={{flex:1}}/>
-      </ScrollView>
+    <ScrollView style={styles.container}>
+      <View style={styles.header}>
+      <CameraBtnIcon/>
+        <Text style={styles.headerTitle}>Fahagram</Text>
+      </View>
+         <StoryList style={{flex:1}}/>
+         <PostList style={{flex:1}}/>
+    </ScrollView>
   </View>
     );
   }
@@ -54,13 +49,14 @@ const styles = StyleSheet.create({
     fontSize: 35,
     fontWeight: 'bold',
     alignSelf:'center',
+    paddingLeft:45,
   },
-  cameraBtn:{
+  cameraBtnBackground:{
     width: 47,
     height:32,
     borderColor:'black',
     borderTopRightRadius:16,
     borderBottomRightRadius:16,
-    paddingTop:15
-  }
+    paddingTop:20
+}
 });

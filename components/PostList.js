@@ -10,10 +10,7 @@ export default class PostList extends React.Component {
         <ScrollView vertical={true}>
           <Post/>
           <Post/>
-          <Post/>
-          <Post/>
-          <Post/>
-          <Post/>
+
         </ScrollView>
       </View>
     );
