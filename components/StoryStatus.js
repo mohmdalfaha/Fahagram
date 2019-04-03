@@ -1,11 +1,18 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
+import {Constants,LinearGradient} from 'expo';
 
 export default class StoryList extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.box}/>
+        <LinearGradient
+          colors = {['rgb(48,35,174)','rgb(200,109,215)']}
+          style = {{width:54,height:54,borderRadius:50}}
+          >
+      <View style={styles.box}>
+        </View>
+      </LinearGradient>
         <Text style={styles.handle}>Mohmd Alfaha</Text>
       </View>
     );
@@ -23,9 +30,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
     box: {
-    width: 54,
-    height:54,
-    backgroundColor: 'rgb(200,109,215)',
+    width: 50,
+    height:50,
     borderColor:'black',
     borderRadius:39,
   },

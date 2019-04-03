@@ -1,12 +1,20 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
+import {Constants,LinearGradient} from 'expo';
 
 export default class Post extends React.Component {
   render() {
     return (
       <View style={styles.postcontainer}>
         <View style={styles.postHeader}>
-          <View style={styles.box}/>
+        <LinearGradient
+          colors = {['rgb(48,35,174)','rgb(200,109,215)']}
+          style = {{width:35,height:35,borderRadius:50}}
+          >
+      <View style={styles.box}>
+
+      </View>
+      </LinearGradient>
           <View style={styles.titlesContainers}>
             <Text style={styles.handle}>Mohmd Alfaha</Text>
             <Text style={styles.location}>Jeddah</Text>
@@ -35,7 +43,6 @@ const styles = StyleSheet.create({
     box: {
     width: 35,
     height:35,
-    backgroundColor: 'rgb(200,109,215)',
     borderColor:'black',
     borderRadius:39,
   },

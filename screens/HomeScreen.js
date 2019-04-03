@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
+import {Constants,LinearGradient} from 'expo';
 
 import StoryList from '../components/StoryList'
 import PostList from '../components/PostList'
@@ -23,6 +24,12 @@ export default class HomeScreen extends React.Component {
    <View style={styles.container}>
       <ScrollView style={styles.container}>
         <View style={styles.header}>
+         <LinearGradient
+          colors = {['rgb(48,35,174)','rgb(200,109,215)']}
+          style = {styles.cameraBtn}
+          >
+
+      </LinearGradient>
           <View style={styles.cameraBtn}/>
           <Text style={styles.headerTitle}> Fahagram </Text>
         </View>
@@ -52,9 +59,9 @@ const styles = StyleSheet.create({
   cameraBtn:{
     width: 47,
     height:32,
-    backgroundColor: 'rgb(200,109,215)',
     borderColor:'black',
     borderTopRightRadius:16,
     borderBottomRightRadius:16,
+    paddingTop:15
   }
 });
