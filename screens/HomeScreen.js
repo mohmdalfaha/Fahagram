@@ -31,7 +31,7 @@ export default class HomeScreen extends React.Component {
 
       </LinearGradient>
           <View style={styles.cameraBtn}/>
-          <Text style={styles.headerTitle}> Fahagram </Text>
+          <Text style={styles.headerTitle}>Fahagram</Text>
         </View>
            <StoryList style={{flex:1}}/>
            <PostList style={{flex:1}}/>
@@ -48,13 +48,12 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection:'row',
-    paddingTop:25,
-    paddingBottom:6,
+    paddingTop:25
   },
   headerTitle: {
     fontSize: 35,
     fontWeight: 'bold',
-    paddingLeft:40,
+    alignSelf:'center',
   },
   cameraBtn:{
     width: 47,

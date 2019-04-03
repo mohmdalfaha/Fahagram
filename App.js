@@ -20,7 +20,7 @@ export default class App extends React.Component {
     } else {
       return (
         <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar translucent barStyle="light-content" />}
+          {Platform.OS === 'ios' && <StatusBar translucent backgroundColor={'#000000'} barStyle="light-content" />}
           <AppNavigator />
         </View>
       );

@@ -7,7 +7,7 @@ export default class StoryList extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-      <ScrollView horizontal={true}>
+      <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
         <StoryStatus/>
         <StoryStatus/>
         <StoryStatus/>
