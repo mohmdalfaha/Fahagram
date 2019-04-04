@@ -4,6 +4,7 @@ import {Constants,LinearGradient} from 'expo';
 
 export default class Post extends React.Component {
   render() {
+    const { image } = this.props
     return (
       <View style={styles.postcontainer}>
         <View style={styles.postHeader}>
@@ -20,7 +21,9 @@ export default class Post extends React.Component {
             <Text style={styles.location}>Jeddah</Text>
           </View>
         </View>
-      <View style={styles.picContainer}/>
+      {image == null
+        ? (<View style={styles.picContainer}/>)
+        : (<Image style={styles.picContainer} source={{uri: image}}/>)}
       <Text style={styles.ago}>3 hours ago</Text>
       </View>
     );

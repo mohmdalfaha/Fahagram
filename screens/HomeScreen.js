@@ -7,8 +7,9 @@ import {
   Text,
   TouchableOpacity,
   View,
+  ImageEditor
 } from 'react-native';
-import {Icon,Constants,LinearGradient} from 'expo';
+import {ImagePicker, Icon,Constants,LinearGradient} from 'expo';
 import Colors from '../constants/Colors';
 
 import StoryList from '../components/StoryList'
@@ -20,16 +21,42 @@ export default class HomeScreen extends React.Component {
     header: null,
   };
 
+  state={
+    image: null,
+  }
+
+  pickImage = () => {
+    ImagePicker.launchImageLibraryAsync({
+      allowEditing: true,
+      aspect: [2,1]
+    }).then((result) =>{
+      if(result.cancelled) {
+        return
+      }
+
+      ImageEditor.cropImage(result.uri,{
+        offset: { x:0, y:0},
+        size: { width: result.width, height: result.height},
+        displaySize: { width: 375, height:201 },
+        resizeMode: 'contain',
+      },
+      (uri) => this.setState(() => ({ image: uri})),
+      () => console.log('Error'))
+    })
+  }
+
   render() {
     return (
    <View style={styles.container}>
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-      <CameraBtnIcon/>
+      <TouchableOpacity onPress={this.pickImage}>
+        <CameraBtnIcon />
+      </TouchableOpacity>
         <Text style={styles.headerTitle}>Fahagram</Text>
       </View>
          <StoryList style={{flex:1}}/>
-         <PostList style={{flex:1}}/>
+         <PostList image={this.state.image} style={{flex:1}}/>
     </ScrollView>
   </View>
     );

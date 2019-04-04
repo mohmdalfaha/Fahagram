@@ -36,8 +36,7 @@ export default class TabBarIcon extends React.Component {
 const styles = StyleSheet.create({
   tabBarIcon:{
     alignSelf:'center',
-    paddingTop:5,
+    paddingTop:8,
     paddingRight:2,
   }
 })
-

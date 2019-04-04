@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, ScrollView } from 'react-native';
 
 import Post from './Post'
 
@@ -8,9 +8,7 @@ export default class PostList extends React.Component {
     return (
       <View style={styles.container}>
         <ScrollView vertical={true}>
-          <Post/>
-          <Post/>
-
+          <Post image={this.props.image}/>
         </ScrollView>
       </View>
     );
