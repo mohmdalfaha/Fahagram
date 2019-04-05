@@ -1,20 +1,41 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
 
 import StoryStatus from './StoryStatus'
 
-export default class StoryList extends React.Component {
-  render() {
-    return (
-      <View style={styles.container}>
-      <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
-        <StoryStatus/>
-        <StoryStatus/>
-      </ScrollView>
-      </View>
-    );
+const StoryList = () => (
+  <Query
+    query={gql`
+    {
+      users {
+        userid
+        handle
+        name
+        avatarURL
+      }
+    }
+  `}>
+  {({ loading, error, data }) => {
+    if (loading) return <Text>Good things take time....</Text>
+      if (error) return <Text>Something went wrong...</Text>
+
+        return (
+          <View style={styles.container}>
+            <ScrollView showsHorizontalScrollIndicator={false} horizontal={true}>
+              {data.users.map(user =>
+                <StoryStatus key={user.userid} user={user} />)}
+            </ScrollView>
+          </View>
+        )
+    }
   }
-}
+  </Query>
+)
+
+export default StoryList
+
 
 const styles = StyleSheet.create({
   container: {

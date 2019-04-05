@@ -2,10 +2,7 @@ import * as React from 'react';
 import { Text, View, StyleSheet, Image, Dimensions  } from 'react-native';
 import {Constants,LinearGradient} from 'expo';
 
-export default class Post extends React.Component {
-  render() {
-    const { post } = this.props
-    return (
+const Post = (props) => (
       <View style={styles.postcontainer}>
         <View style={styles.postHeader}>
         <LinearGradient
@@ -17,19 +14,19 @@ export default class Post extends React.Component {
       </View>
       </LinearGradient>
           <View style={styles.titlesContainers}>
-            <Text style={styles.handle}>{post.author}</Text>
-            <Text style={styles.location}>{post.location}</Text>
+            <Text style={styles.handle}>{props.post.author}</Text>
+            <Text style={styles.location}>{props.post.location}</Text>
           </View>
         </View>
 
-      {post.imageURL == null
+      {props.post.imageURL == null
         ? (<View style={styles.picContainer}/>)
-        : (<Image style={styles.picContainer} source={{uri: post.imageURL}}/>)}
-      <Text style={styles.ago}>3 hours ago</Text>
+        : (<Image style={styles.picContainer} source={{uri: props.post.imageURL}}/>)}
+      <Text style={styles.ago}>{props.post.time}</Text>
       </View>
     );
-  }
-}
+
+export default Post
 
 const styles = StyleSheet.create({
   postcontainer: {

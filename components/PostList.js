@@ -26,7 +26,7 @@ import Post from './Post'
           <View style={styles.container}>
             <ScrollView vertical={true}>
               {data.posts.map(post =>
-                <Post post={post}/>)}
+                <Post key={post.postid} post={post} />)}
             </ScrollView>
           </View>
         )
@@ -34,7 +34,6 @@ import Post from './Post'
   }
   </Query>
 )
-
 
 export default PostList
 

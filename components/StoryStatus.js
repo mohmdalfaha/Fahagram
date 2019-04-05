@@ -2,22 +2,26 @@ import * as React from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
 import {Constants,LinearGradient} from 'expo';
 
-export default class StoryList extends React.Component {
-  render() {
+function StoryStatus(props){
+  const { avatarURL, name} = props.user
     return (
       <View style={styles.container}>
         <LinearGradient
           colors = {['rgb(48,35,174)','rgb(200,109,215)']}
           style = {{width:54,height:54,borderRadius:50}}
           >
-      <View style={styles.box}>
-        </View>
+      <Image
+        style={styles.box}
+        source={{uri: avatarURL}}
+        />
       </LinearGradient>
-        <Text style={styles.handle}>Mohmd Alfaha</Text>
+        <Text style={styles.handle}>{name}</Text>
       </View>
-    );
-  }
+  );
 }
+
+export default StoryStatus
+
 
 const styles = StyleSheet.create({
   container: {
