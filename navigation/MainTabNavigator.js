@@ -99,4 +99,8 @@ export default createBottomTabNavigator({
   HomeStack,
   LinksStack,
   ProfileStack
+},
+{
+  initialRouteName: 'HomeStack',
+  headerMode: 'none',
 });
