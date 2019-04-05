@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@expo/samples": "2.1.1",
+    "apollo-boost": "^0.3.1",
     "apollo-cache-inmemory": "^1.5.1",
     "apollo-client": "^2.5.1",
     "apollo-link-http": "^1.5.14",
@@ -22,6 +23,9 @@
     "react-apollo": "^2.5.3",
     "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
     "react-native-elements": "^1.1.0",
+    "react-native-image-pan-zoom": "^2.1.11",
+    "react-native-image-zoom": "^0.32.0",
+    "react-native-photo-view": "^1.5.2",
     "react-navigation": "^3.0.9",
     "react-time-ago": "^5.0.2"
   },

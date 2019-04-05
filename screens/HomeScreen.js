@@ -11,10 +11,16 @@ import {
 } from 'react-native';
 import {ImagePicker, Icon,Constants,LinearGradient} from 'expo';
 import Colors from '../constants/Colors';
+import ApolloClient from 'apollo-boost'
+import { ApolloProvider } from 'react-apollo'
 
 import StoryList from '../components/StoryList'
 import PostList from '../components/PostList'
 import CameraBtnIcon from '../components/CameraBtn'
+
+const client = new ApolloClient({
+  uri: 'https://fahagram.herokuapp.com/v1alpha1/graphql',
+})
 
 export default class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -47,6 +53,7 @@ export default class HomeScreen extends React.Component {
 
   render() {
     return (
+  <ApolloProvider client={client}>
    <View style={styles.container}>
     <ScrollView style={styles.container}>
       <View style={styles.header}>
@@ -56,9 +63,10 @@ export default class HomeScreen extends React.Component {
         <Text style={styles.headerTitle}>Fahagram</Text>
       </View>
          <StoryList style={{flex:1}}/>
-         <PostList image={this.state.image} style={{flex:1}}/>
+         <PostList  style={{flex:1}}/>
     </ScrollView>
   </View>
+  </ApolloProvider>
     );
   }
 }
