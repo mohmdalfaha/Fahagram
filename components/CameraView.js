@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
-import { Camera, Permissions } from 'expo';
+import { Camera, Permissions, MediaLibrary  } from 'expo';
 import {Ionicons,Entypo} from '@expo/vector-icons'
 import { Thumbnail } from 'native-base'
 
@@ -12,13 +12,14 @@ export default class CameraView extends React.Component {
   };
 
   async componentDidMount() {
-    const { status } = await Permissions.askAsync(Permissions.CAMERA);
+    const { status } = await Permissions.askAsync(Permissions.CAMERA, Permissions.CAMERA_ROLL).catch(console.error);
     this.setState({ hasCameraPermission: status === 'granted' });
   }
 
   async takePhoto() {
     if(this.camera) {
       let photo = await this.camera.takePictureAsync()
+      const asset = await MediaLibrary.createAssetAsync(photo.uri);
       this.setState({clickedPic: photo.uri})
     }
   }
