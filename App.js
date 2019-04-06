@@ -27,7 +27,7 @@ export default class App extends React.Component {
           translucent
           backgroundColor={'#000000'}
           barStyle="light-content" />}
-          <AppNavigator />
+          <AppNavigator style={styles.navBar}/>
         </View>
       );
     }
@@ -65,4 +65,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff',
   },
+  navBar: {
+    height:61
+  }
 });
