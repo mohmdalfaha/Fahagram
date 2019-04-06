@@ -1,11 +1,14 @@
 import React from 'react';
 import { Text, View, TouchableOpacity } from 'react-native';
 import { Camera, Permissions } from 'expo';
+import {Ionicons,Entypo} from '@expo/vector-icons'
+import { Thumbnail } from 'native-base'
 
 export default class CameraView extends React.Component {
   state = {
     hasCameraPermission: null,
     type: Camera.Constants.Type.back,
+    clickedPic: 'https://www.hertrack.com/wp-content/uploads/2018/10/no-image.jpg',
   };
 
   async componentDidMount() {
@@ -13,6 +16,12 @@ export default class CameraView extends React.Component {
     this.setState({ hasCameraPermission: status === 'granted' });
   }
 
+  async takePhoto() {
+    if(this.camera) {
+      let photo = await this.camera.takePictureAsync()
+      this.setState({clickedPic: photo.uri})
+    }
+  }
   render() {
     const { hasCameraPermission } = this.state;
     if (hasCameraPermission === null) {
@@ -22,7 +31,11 @@ export default class CameraView extends React.Component {
     } else {
       return (
         <View style={{ flex: 1 }}>
-          <Camera style={{ flex: 1 }} type={this.state.type}>
+          <Camera
+            style={{ flex: 1 }}
+            type={this.state.type}
+            ref={ ref => this.camera = ref}
+            >
             <View
               style={{
                 flex: 1,
@@ -33,7 +46,6 @@ export default class CameraView extends React.Component {
               position: 'absolute',
               height: 100,
               width: '100%',
-              borderWidth: 1,
               bottom: 0,
               borderColor: '#fff',
               flexDirection: 'row',
@@ -48,15 +60,17 @@ export default class CameraView extends React.Component {
                           : Camera.Constants.Type.back,
                       });
                     }}>
-             <Text>Switch Cam</Text>
+             <Ionicons name="ios-reverse-camera" size={50} color={'#fff'}/>
            </TouchableOpacity>
 
            <TouchableOpacity style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
-             <Text>Switch Cam</Text>
+             <Entypo onPress={() => this.takePhoto()} name="circle" size={80} color={'#fff'}/>
            </TouchableOpacity>
 
            <TouchableOpacity style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
-             <Text>Switch Cam</Text>
+             <Thumbnail
+                source={{uri: this.state.clickedPic}}
+                />
            </TouchableOpacity>
 
           </View>
