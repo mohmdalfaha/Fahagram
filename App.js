@@ -3,7 +3,7 @@ import { Platform, StatusBar, StyleSheet, View } from 'react-native';
 import { AppLoading, Asset, Font, Icon, } from 'expo';
 
 import AppNavigator from './navigation/AppNavigator';
-
+import CameraView from './components/CameraView';
 
 export default class App extends React.Component {
   state = {
@@ -27,7 +27,7 @@ export default class App extends React.Component {
           translucent
           backgroundColor={'#000000'}
           barStyle="light-content" />}
-          <AppNavigator style={styles.navBar}/>
+          <CameraView/>
         </View>
       );
     }
