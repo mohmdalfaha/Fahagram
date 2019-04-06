@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Text, View, StyleSheet, Image, Dimensions  } from 'react-native';
 import {Constants,LinearGradient} from 'expo';
 import TimeAgo from 'react-native-timeago';
+import PinchZoomView from 'react-native-pinch-zoom-view';
 
 const Post = (props) => (
       <View style={styles.postcontainer}>
@@ -17,15 +18,15 @@ const Post = (props) => (
           <View style={styles.titlesContainers}>
             <Text style={styles.handle}>{props.post.author}</Text>
             <Text style={styles.location}>{props.post.location}</Text>
-            <Text style={styles.location}>{props.post.time}</Text>
 
           </View>
         </View>
-
+        <PinchZoomView>
       {props.post.imageURL == null
         ? (<View style={styles.picContainer}/>)
         : (<Image style={styles.picContainer} source={{uri: props.post.imageURL}}/>)}
-      <TimeAgo time={'2015-06-21T06:24:44.124Z'}/>
+        </PinchZoomView>
+      <TimeAgo time={'2019-04-06T00:17:44.124Z'}/>
       </View>
     );
 

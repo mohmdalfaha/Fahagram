@@ -78,7 +78,7 @@ ProfileStack.navigationOptions = {
 };
 
 const SettingsStack = createStackNavigator({
-  Settings: HomeScreen, //change this when ready for production
+  Settings: SettingsScreen, //change this when ready for production
 });
 
 SettingsStack.navigationOptions = {
