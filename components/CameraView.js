@@ -29,24 +29,38 @@ export default class CameraView extends React.Component {
                 backgroundColor: 'transparent',
                 flexDirection: 'row',
               }}>
-              <TouchableOpacity
-                style={{
-                  flex: 0.1,
-                  alignSelf: 'flex-end',
-                  alignItems: 'center',
-                }}
-                onPress={() => {
-                  this.setState({
-                    type: this.state.type === Camera.Constants.Type.back
-                      ? Camera.Constants.Type.front
-                      : Camera.Constants.Type.back,
-                  });
-                }}>
-                <Text
-                  style={{ fontSize: 18, marginBottom: 10, color: 'white' }}>
-                  {' '}Flip{' '}
-                </Text>
-              </TouchableOpacity>
+          <View style={{
+              position: 'absolute',
+              height: 100,
+              width: '100%',
+              borderWidth: 1,
+              bottom: 0,
+              borderColor: '#fff',
+              flexDirection: 'row',
+           }}>
+
+           <TouchableOpacity
+              style={{flex:1, justifyContent: 'center', alignItems: 'center'}}
+              onPress={() => {
+                      this.setState({
+                        type: this.state.type === Camera.Constants.Type.back
+                          ? Camera.Constants.Type.front
+                          : Camera.Constants.Type.back,
+                      });
+                    }}>
+             <Text>Switch Cam</Text>
+           </TouchableOpacity>
+
+           <TouchableOpacity style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
+             <Text>Switch Cam</Text>
+           </TouchableOpacity>
+
+           <TouchableOpacity style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
+             <Text>Switch Cam</Text>
+           </TouchableOpacity>
+
+          </View>
+
             </View>
           </Camera>
         </View>
