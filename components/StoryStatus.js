@@ -8,7 +8,7 @@ function StoryStatus(props){
       <View style={styles.container}>
         <LinearGradient
           colors = {['rgb(48,35,174)','rgb(200,109,215)']}
-          style = {{width:54,height:54,borderRadius:50}}
+          style = {styles.gradientBackGround}
           >
       <Image
         style={styles.box}
@@ -27,17 +27,27 @@ const styles = StyleSheet.create({
   container: {
     flex:1,
     marginLeft:15,
-    paddingTop:5,
+    paddingTop:0,
     flexDirection: 'column',
     justifyContent: 'center',
-    alignContent: 'center',
     backgroundColor: 'white',
+  },
+  gradientBackGround: {
+    flex:1,
+    flexDirection:'column',
+    justifyContent:'center',
+    alignContent:'center',
+    width:54,
+    height:54,
+    borderRadius:50,
+    paddingLeft:2,
   },
     box: {
     width: 50,
     height:50,
     borderColor:'black',
     borderRadius:39,
+    paddingTop:5,
   },
   handle: {
     textAlign: 'center',

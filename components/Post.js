@@ -21,7 +21,7 @@ const Post = (props) => (
 
           </View>
         </View>
-        <PinchZoomView>
+        <PinchZoomView >
       {props.post.imageURL == null
         ? (<View style={styles.picContainer}/>)
         : (<Image style={styles.picContainer} source={{uri: props.post.imageURL}}/>)}
