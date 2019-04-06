@@ -1,14 +1,19 @@
 import React from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
-import { Camera, Permissions, MediaLibrary  } from 'expo';
+import { Text, View, TouchableOpacity, ImageEditor } from 'react-native';
+import { Camera, Permissions, MediaLibrary,ImagePicker } from 'expo';
 import {Ionicons,Entypo} from '@expo/vector-icons'
 import { Thumbnail } from 'native-base'
 
 export default class CameraView extends React.Component {
+  static navigationOptions = {
+    header: null,
+  };
+
   state = {
     hasCameraPermission: null,
     type: Camera.Constants.Type.back,
     clickedPic: 'https://www.hertrack.com/wp-content/uploads/2018/10/no-image.jpg',
+    selectedPic: null
   };
 
   async componentDidMount() {
@@ -23,6 +28,27 @@ export default class CameraView extends React.Component {
       this.setState({clickedPic: photo.uri})
     }
   }
+
+  pickImage = () => {
+    ImagePicker.launchImageLibraryAsync({
+      allowEditing: true,
+      aspect: [2,1]
+    }).then((result) =>{
+      if(result.cancelled) {
+        return
+      }
+
+      ImageEditor.cropImage(result.uri,{
+        offset: { x:0, y:0},
+        size: { width: result.width, height: result.height},
+        displaySize: { width: 375, height:201 },
+        resizeMode: 'contain',
+      },
+      (uri) => this.setState(() => ({ selectedPic: uri})),
+      () => console.log('Error'))
+    })
+  }
+
   render() {
     const { hasCameraPermission } = this.state;
     if (hasCameraPermission === null) {
@@ -68,12 +94,12 @@ export default class CameraView extends React.Component {
              <Entypo onPress={() => this.takePhoto()} name="circle" size={80} color={'#fff'}/>
            </TouchableOpacity>
 
-           <TouchableOpacity style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
+           <TouchableOpacity onPress={this.pickImage} style={{flex:1, justifyContent: 'center', alignItems: 'center'}}>
              <Thumbnail
                 source={{uri: this.state.clickedPic}}
+
                 />
            </TouchableOpacity>
-
           </View>
 
             </View>
