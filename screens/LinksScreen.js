@@ -1,6 +1,7 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, Text,View } from 'react-native';
 import { ExpoLinksView } from '@expo/samples';
+import {FontAwesome} from '@expo/vector-icons'
 
 export default class LikesScreen extends React.Component {
   static navigationOptions = {
@@ -9,11 +10,10 @@ export default class LikesScreen extends React.Component {
 
   render() {
     return (
-      <ScrollView style={styles.container}>
-        {/* Go ahead and delete ExpoLinksView and replace it with your
-           * content, we just wanted to provide you with some helpful links */}
-        <ExpoLinksView />
-      </ScrollView>
+      <View style={styles.container}>
+        <FontAwesome name="heart-o" size={100}/>
+        <Text>Likes Screen</Text>
+      </View>
     );
   }
 }
@@ -21,7 +21,8 @@ export default class LikesScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 15,
+    justifyContent: 'center',
+    paddingLeft: 140,
     backgroundColor: '#fff',
   },
 });

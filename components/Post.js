@@ -9,24 +9,24 @@ const Post = (props) => (
         <View style={styles.postHeader}>
         <LinearGradient
           colors = {['rgb(48,35,174)','rgb(200,109,215)']}
-          style = {{width:35,height:35,borderRadius:50}}
+          style = {styles.gradientBackground}
           >
-      <View style={styles.box}>
+      <Image
+      source={{uri: props.post.avatarURL}}
+      style={styles.box}/>
 
-      </View>
       </LinearGradient>
           <View style={styles.titlesContainers}>
             <Text style={styles.handle}>{props.post.author}</Text>
             <Text style={styles.location}>{props.post.location}</Text>
-
           </View>
+            <TimeAgo style={styles.timeAgo}time={props.post.time}/>
         </View>
         <PinchZoomView >
       {props.post.imageURL == null
         ? (<View style={styles.picContainer}/>)
         : (<Image style={styles.picContainer} source={{uri: props.post.imageURL}}/>)}
         </PinchZoomView>
-      <TimeAgo time={'2019-04-06T00:17:44.124Z'}/>
       </View>
     );
 
@@ -39,17 +39,28 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
   },
   postHeader: {
+    flex:1,
     flexDirection: 'row',
     justifyContent: 'flex-start',
     alignContent: 'center',
     backgroundColor: 'white',
     padding: 15,
   },
-    box: {
-    width: 35,
+  gradientBackground: {
+    alignSelf: 'flex-start',
+    justifyContent:'center',
+    alignContent: 'center',
+    width:35,
     height:35,
+    borderRadius:50
+  },
+    box: {
+    alignSelf: 'center',
+    width: 31,
+    height:31,
     borderColor:'black',
     borderRadius:39,
+    backgroundColor:'#fff',
   },
   titlesContainers: {
     flexDirection: 'column',
@@ -68,12 +79,13 @@ const styles = StyleSheet.create({
     fontSize: 8,
     color:'gray',
   },
-  ago: {
-    flexDirection:'row',
-    justifyContent: 'flex-end',
-    alignContent:'flex-end',
-    fontSize: 8,
+  timeAgo: {
+    alignSelf:'center',
+    paddingTop:25,
+    paddingLeft:290,
+    fontSize: 9,
     color:'gray',
+    position:'absolute',
   },
   picContainer:{
     flex:1,

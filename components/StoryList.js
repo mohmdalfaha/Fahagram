@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, Image, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, Image, ScrollView, ProgressBarAndroid } from 'react-native';
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
@@ -18,7 +18,12 @@ const StoryList = () => (
     }
   `}>
   {({ loading, error, data }) => {
-    if (loading) return <Text>Good things take time....</Text>
+    if (loading) return <ProgressBarAndroid
+          styleAttr="Horizontal"
+          indeterminate={false}
+          color="blue"
+          progress={1}
+        />
       if (error) return <Text>Something went wrong...</Text>
 
         return (

@@ -1,10 +1,8 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, ImageEditor } from 'react-native';
 import { Camera, Permissions, MediaLibrary,ImagePicker } from 'expo';
-import {Ionicons,Entypo,MaterialIcons} from '@expo/vector-icons'
+import {Ionicons,Entypo} from '@expo/vector-icons'
 import { Thumbnail } from 'native-base'
-
-import HomeScreen from './HomeScreen' // we need to navigate back to Home screen after selecting a pic
 
 export default class CameraView extends React.Component {
 

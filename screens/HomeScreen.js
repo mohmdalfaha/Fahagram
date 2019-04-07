@@ -31,33 +31,15 @@ export default class HomeScreen extends React.Component {
     image: null,
   }
 
-  pickImage = () => {
-    ImagePicker.launchImageLibraryAsync({
-      allowEditing: true,
-      aspect: [2,1]
-    }).then((result) =>{
-      if(result.cancelled) {
-        return
-      }
-
-      ImageEditor.cropImage(result.uri,{
-        offset: { x:0, y:0},
-        size: { width: result.width, height: result.height},
-        displaySize: { width: 375, height:201 },
-        resizeMode: 'contain',
-      },
-      (uri) => this.setState(() => ({ image: uri})),
-      () => console.log('Error'))
-    })
-  }
-
   render() {
     return (
   <ApolloProvider client={client}>
    <View style={styles.container}>
     <ScrollView style={styles.container}>
       <View style={styles.header}>
-      <TouchableOpacity onPress={this.pickImage}>
+      <TouchableOpacity onPress={() => this.props.navigation.navigate(
+        'CameraView'
+        )}>
         <CameraBtnIcon />
       </TouchableOpacity>
         <Text style={styles.headerTitle}>Fahagram</Text>

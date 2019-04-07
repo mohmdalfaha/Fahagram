@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   container: {
     flex:1,
     marginLeft:15,
-    paddingTop:0,
+    paddingTop:10,
     flexDirection: 'column',
     justifyContent: 'center',
     backgroundColor: 'white',
@@ -48,11 +48,12 @@ const styles = StyleSheet.create({
     borderColor:'black',
     borderRadius:39,
     paddingTop:5,
+    backgroundColor:'#fff'
   },
   handle: {
     textAlign: 'center',
     fontSize: 6,
-    paddingTop:8,
+    paddingTop:4,
     color:'black',
   }
 });

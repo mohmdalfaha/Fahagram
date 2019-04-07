@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, ScrollView } from 'react-native';
+import { Text, View, StyleSheet, ScrollView,ProgressBarAndroid } from 'react-native';
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 
@@ -15,18 +15,19 @@ import Post from './Post'
         author
         imageURL
         time
+        avatarURL
       }
     }
   `}>
   {({ loading, error, data }) => {
-    if (loading) return <Text>Good things take time....</Text>
+    if (loading) return <ProgressBarAndroid color="blue"/>
       if (error) return <Text>Something went wrong...</Text>
 
         return (
           <View style={styles.container}>
             <ScrollView vertical={true}>
               {data.posts.map(post =>
-                <Post key={post.postid} post={post} />)}
+                <Post key={post.postid} post={post}/>)}
             </ScrollView>
           </View>
         )
